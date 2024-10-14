@@ -2,7 +2,7 @@ import Lazy from './lazy'
 import {
   defineComponent,
   onMounted,
-  onUnmounted,
+  onBeforeUnmount,
   ref,
   reactive,
   computed,
@@ -47,8 +47,8 @@ export default (lazy: Lazy) => {
         lazy.addLazyBox(vm.value)
         lazy.lazyLoadHandler()
       })
-      
-      onUnmounted(() => {
+
+      onBeforeUnmount(() => {
         lazy.removeComponent(vm.value)
       })
 
